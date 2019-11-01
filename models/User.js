@@ -13,7 +13,19 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    blogs: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Blog'
+        }
+    ],
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
 });
 
 UserSchema.pre('save', async function(next) {

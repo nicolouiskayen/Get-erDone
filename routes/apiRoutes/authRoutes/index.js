@@ -14,10 +14,6 @@ router.route('/signin')
     .post(authMiddlewares.requireSignIn, authController.signIn);
 
 
-
-router.route('/getinfo')
-    .get(authController.logUser);
-
 // router.route('/logout')
 //     .get(authController.logout);
 
