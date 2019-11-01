@@ -27,5 +27,9 @@ module.exports = {
             console.log(e);
             res.status(404).json({ e });
         }
+    },
+    signIn: (req, res) => {
+        res.send("Hooray!");
+        // res.send({ token: tokenForUser(req.user) });
     }
 }
