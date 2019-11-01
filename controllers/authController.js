@@ -29,7 +29,11 @@ module.exports = {
         }
     },
     signIn: (req, res) => {
-        res.send("Hooray!");
+        res.send("Hooray!");    
         // res.send({ token: tokenForUser(req.user) });
+    },
+    logUser: (req, res) => {
+        console.log(req.user);
+        res.send(req.user);
     }
 }
