@@ -63,9 +63,9 @@ const jwtLogin = new JwtStrategy(jwtOptions, async(payload, done) => {
 
 // Tells passport to use the strategies below
 // With the code below, it tells passport that
-// "We have a strategy called "JWT"
+// "We have a strategy called "jwt"
 passport.use(jwtLogin);
 
 // With the code below, it tells passport that
-// "We have a strategy called "Local"
+// "We have a strategy called "local"
 passport.use(localLogin);
