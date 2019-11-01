@@ -30,6 +30,7 @@ module.exports = {
     },
     signIn: (req, res) => {
         // res.send("Hooray!");    
+        console.log(req.user);
         res.send({ token: tokenForUser(req.user) });
     }
 }

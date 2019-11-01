@@ -30,15 +30,17 @@ const UserSchema = new Schema({
 
 UserSchema.pre('save', async function(next) {
     const user = this;
-    try {
-        const salt = await bcrypt.genSalt();
-        console.log("Salt", salt);        
-        const hash = await bcrypt.hash(user.password, salt);
-        console.log("hash", hash);
-        user.password = hash;
-        next();
-    } catch(e){
-        next(e);
+    if(user.isModified('password')) {
+        try {        
+            const salt = await bcrypt.genSalt();
+            console.log("Salt", salt);        
+            const hash = await bcrypt.hash(user.password, salt);
+            console.log("hash", hash);
+            user.password = hash;
+            next();
+        } catch(e){
+            next(e);
+        }
     }
 }); 
 
@@ -46,6 +48,7 @@ UserSchema.pre('save', async function(next) {
 UserSchema.methods.comparePassword = async function(candidatePassword, callback) {
     const user = this;
     try {
+        console.log(user.password);
         const isMatch = await bcrypt.compare(candidatePassword, user.password);
         callback(null, isMatch);
     } catch(e) {

@@ -16,13 +16,17 @@ const localLogin = new LocalStrategy(localOptions, async (email, password, done)
     try {
         const user = await User.findOne({ email });
         if(!user) {
+            console.log("I'm hit");
             return done(null, false);
         }
         user.comparePassword(password, (err, isMatch) => {
+
             if(err) {
+                console.log("I'm hit in err");
                 return done(err);
             }
-            if(!isMatch) {
+            if(!isMatch) {                
+                console.log("I'm hit in match");
                 return done(null, false);
             }
             return done(null, user);
