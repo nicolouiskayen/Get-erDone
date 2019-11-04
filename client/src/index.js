@@ -6,6 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 
 import App from './App';
+import Counter from './containers/Counter';
 
 import reducers from './reducers';
 
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Router>
             <Switch>
                 <Route exact path='/' component={App}/>
+                <Route exact path='/counter' component={Counter}/>
             </Switch>       
         </Router>
     </Provider>
