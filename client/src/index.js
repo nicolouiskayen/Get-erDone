@@ -5,8 +5,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 
-import App from './App';
+import App from './components/App';
 import Counter from './containers/Counter';
+import SignUp from './containers/auth/SignUp';
 
 import reducers from './reducers';
 
@@ -19,10 +20,10 @@ const store = createStore(reducers,
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-            <Switch>
-                <Route exact path='/' component={App}/>
-                <Route exact path='/counter' component={Counter}/>
-            </Switch>       
+            <App>
+                <Route exact path='/signup' component={SignUp} />
+                <Route exact path='/counter' component={Counter} />                                
+            </App>
         </Router>
     </Provider>
     ,document.getElementById('root'));
