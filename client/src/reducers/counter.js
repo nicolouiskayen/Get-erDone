@@ -1,8 +1,6 @@
-
 const INITIAL_STATE = {
     counter: 0
 };
-
 
 export default function(state = INITIAL_STATE, action){
     switch(action.type) {
