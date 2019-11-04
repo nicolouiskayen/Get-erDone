@@ -20,7 +20,7 @@ class Counter extends Component {
 // This state is equivalent to the object that's inside our reducers/index.js
 function mapStateToProps(state){
     return { counter: state.counter.counter };
-}
+}   
 
 export default connect(mapStateToProps, {increment, decrement})(Counter);
 
