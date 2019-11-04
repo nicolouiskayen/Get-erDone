@@ -42,6 +42,7 @@ UserSchema.pre('save', async function(next) {
             next(e);
         }
     }
+    next();
 }); 
 
 

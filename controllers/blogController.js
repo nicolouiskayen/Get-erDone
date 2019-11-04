@@ -10,7 +10,6 @@ module.exports = {
         }
     },
     createBlog: async (req, res) => {
-        
         const { content } = req.body;
         try {
             const newBlog = await new db.Blog({ user: req.user._id, content });
@@ -24,7 +23,6 @@ module.exports = {
         }
     },
     deleteBlog: async (req, res) => {
-        console.log(req.user);
         const { blogId } = req.params;
         try {
             const blog = await db.Blog.findById(blogId);
@@ -33,10 +31,13 @@ module.exports = {
                 return res.status(401).json({ error: 'This is not your blog'});
             }
             await db.Blog.findByIdAndDelete(blogId);
+            req.user.blogs.pull(blogId);                        
+            await req.user.save();
             res.json({ success: true });
         } catch(e) {
             res.json(e);
         }
     }
 };
+
 
