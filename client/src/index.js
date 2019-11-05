@@ -10,6 +10,7 @@ import Counter from './containers/Counter';
 import SignUp from './containers/auth/SignUp';
 import SignIn from './containers/auth/SignIn';
 import SignOut from './containers/auth/SignOut';
+import Blogs from './containers/blogs/Blogs';
 
 
 import reducers from './reducers';
@@ -30,6 +31,7 @@ ReactDOM.render(
                 <Route exact path='/signin' component={SignIn} />
                 <Route exact path='/counter' component={Counter} />   
                 <Route exact path='/signout' component={SignOut}/>                             
+                <Route exact path='/blogs' component={Blogs}/>
             </App>
         </Router>
     </Provider>

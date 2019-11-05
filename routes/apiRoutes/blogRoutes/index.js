@@ -10,7 +10,7 @@ const authMiddlewares = require('./../../../middlewares/authMiddlewares');
 
 // /api/blogs
 router.route('/')
-    .get(authMiddlewares.requireAuth, blogController.getBlogs)
+    .get(blogController.getBlogs)
     .post(authMiddlewares.requireAuth, blogController.createBlog)
 
 
