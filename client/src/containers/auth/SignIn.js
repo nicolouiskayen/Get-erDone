@@ -2,44 +2,53 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
+import { signIn } from './../../actions';
 
-import { signup } from './../../actions';
-
-class SignUp extends Component {
+class SignIn extends Component {
     onSubmit = formProps => {
         console.log(formProps);
-        this.props.signup(formProps, () => {
+        this.props.signIn(formProps, () => {
             this.props.history.push('/counter');
         });
     }
 
+    renderInput = ({ input }) => {                        
+        return (
+            <div>
+                <h1>I am so cool</h1>
+                <p>Custom form Component</p>
+                <input {...input}/>
+            </div>
+        )
+    }
+
     render() {
         const { handleSubmit } = this.props;
-        // console.log(this.props);
-        return (
+
+        return(
             <form onSubmit={handleSubmit(this.onSubmit)}>
                 <fieldset>
                     <label>Email</label>
                     <Field
                         name='email'
-                        type='text'
-                        component='input'
-                        autoComplete='none'
+                        type='text'                        
+                        component={this.renderInput}
+                        autoComplete="none"
                     />
                 </fieldset>
                 <fieldset>
                     <label>Password</label>
                     <Field
                         name='password'
-                        type='password'                        
-                        component='input'
-                        autoComplete='none'
+                        type='password'
+                        component={this.renderInput}
+                        autoComplete="none"
                     />
                 </fieldset>
                 <div>
                     {this.props.errorMessage}
                 </div>
-                <button>Signup</button>
+                <button>Sign In</button>
             </form>
         );
     }
@@ -49,10 +58,7 @@ function mapStateToProps(state) {
     return { errorMessage: state.auth.errorMessage };
 }
 
-
-// export default  connect(mapStateToProps, {signup})(reduxForm({ form: 'signup' })(SignUp));
-//  HOC
 export default compose(
-    connect(mapStateToProps, {signup}),
-    reduxForm({ form: 'signup'})
-)(SignUp);
+    connect(mapStateToProps, {signIn}),
+    reduxForm({ form: 'signin' })
+)(SignIn);
