@@ -16,6 +16,7 @@ router.route('/')
 
 // /api/blogs/:blogId
 router.route('/:blogId')
+    .get(blogController.getBlog)
     .delete(authMiddlewares.requireAuth, blogController.deleteBlog);
 
 

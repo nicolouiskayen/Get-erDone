@@ -10,7 +10,9 @@ import Counter from './containers/Counter';
 import SignUp from './containers/auth/SignUp';
 import SignIn from './containers/auth/SignIn';
 import SignOut from './containers/auth/SignOut';
+import Blog from './containers/blogs/Blog';
 import Blogs from './containers/blogs/Blogs';
+import CreateBlog from './containers/blogs/CreateBlog';
 
 
 import reducers from './reducers';
@@ -32,6 +34,8 @@ ReactDOM.render(
                 <Route exact path='/counter' component={Counter} />   
                 <Route exact path='/signout' component={SignOut}/>                             
                 <Route exact path='/blogs' component={Blogs}/>
+                <Route exact path='/createblog' component={CreateBlog}/>
+                <Route exact path='/blogs/:blogId' component={Blog}/>
             </App>
         </Router>
     </Provider>

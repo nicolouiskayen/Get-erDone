@@ -12,6 +12,7 @@ class Header extends Component {
                     <Link to='/counter'>Counter Page</Link>
                     <Link to='/signout'>Sign Out</Link>
                     <Link to='/blogs'>Blogs</Link>
+                    <Link to='/createblog'>Create a Blog</Link>
                 </div>
             );
         } else {

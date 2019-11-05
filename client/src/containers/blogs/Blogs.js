@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBlogs } from './../../actions';
+import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner'
 
 class Blogs extends Component {
@@ -25,7 +26,7 @@ class Blogs extends Component {
                     this.props.blogs.map(blog => {
                         return (
                             <div key={blog._id}>
-                                <p>{blog.content}</p>
+                                <Link to={`/blogs/${blog._id}`}>{blog.content}</Link>
                                 <p>{blog.user.email}</p>
                             </div>
                         )

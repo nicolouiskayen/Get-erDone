@@ -51,10 +51,19 @@ export const fetchBlogs = () => async dispatch => {
     }
 }
 
+export const fetchBlog = id => async dispatch => {
+    try {
+        const response = await axios.get(`/api/blogs/${id}`);
+        dispatch({ type: types.FETCH_BLOG, payload: response.data });
+    } catch(e) {
+        dispatch({ type: types.BLOGS_ERROR, payload: 'Something went wrong'});
+    }
+}
+
 
 export const createBlog = (blog, callback) => async dispatch => {
     try {
-        const response = await axios.post('/api/blog', blog, {
+        const response = await axios.post('/api/blogs', blog, {
             headers: { authorization: localStorage.getItem('token')}
         });
         

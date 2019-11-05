@@ -3,10 +3,22 @@ const db = require('./../models');
 module.exports = {
     getBlogs: async (req, res) => {
         try {
-            const blogs = await db.Blog.find().populate('user');
+            const blogs = await db.Blog.find().populate('user', 'email');
             res.json(blogs);
         } catch(e) {
             res.json(e);
+        }
+    },
+    getBlog: async (req, res) => {
+        const { blogId } = req.params;
+        try {
+            const blog = await db.Blog.findById(blogId).populate('user', 'email');
+            if(!blog){
+                res.status(404).json({ error: `No blog found`});
+            }
+            res.json(blog);
+        } catch(e) {
+            res.status(403).json(e);
         }
     },
     createBlog: async (req, res) => {
