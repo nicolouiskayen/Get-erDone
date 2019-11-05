@@ -1,4 +1,4 @@
-import { FETCH_BLOGS, FETCH_BLOGS_ERROR } from './../actions/types';
+import * as types from './../actions/types';
 
 const INITIAL_STATE = {
     blogs: [],
@@ -7,10 +7,12 @@ const INITIAL_STATE = {
 
 export default function(state = INITIAL_STATE, action) {
     switch(action.type) {
-        case FETCH_BLOGS:
+        case types.FETCH_BLOGS:
             return {...state, blogs: action.payload };
-        case FETCH_BLOGS_ERROR:
+        case types.BLOGS_ERROR:
             return {...state, errorMessage: action.payload };
+        case types.CREATE_BLOG:
+            return {...state};
         default:
             return state;
     }
